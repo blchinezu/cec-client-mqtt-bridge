@@ -46,7 +46,7 @@ ash remove-build-dependencies.sh
 bash run.sh
 ```
 
-This creates two pipes in `/tmp/fifo` which will facilitate the communication between services and then launches the processes.
+This creates two pipes in `/tmp/fifo/` which will facilitate the communication between processes. It's then launching the processes.
 
 Here's how the `run.sh` script looks like:
 
