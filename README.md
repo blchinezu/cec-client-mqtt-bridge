@@ -51,6 +51,7 @@ Installs git, go & musl-dev
 ```bash
 ash install-build-dependencies.sh
 ```
+
 --------------------------------------------------------------------------------
 
 ### Build
@@ -60,6 +61,7 @@ Builds the `cec-client-mqtt-bridge` binary
 ```bash
 ash build.sh
 ```
+
 --------------------------------------------------------------------------------
 
 ### Remove build dependencies
@@ -69,6 +71,7 @@ Removes git, go & musl-dev
 ```bash
 ash remove-build-dependencies.sh
 ```
+
 --------------------------------------------------------------------------------
 
 ### Run
