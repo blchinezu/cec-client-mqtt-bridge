@@ -20,7 +20,7 @@ the messages although this is already done in `cec-client` and it's the most
 reliable implementation. Everyone checks the CEC functionality and/or their
 implementation with `cec-client` anyway.
 
-So this project is creating a bridge between the cec-client binary and an MQTT
+So this project is creating a bridge between the `cec-client` binary and an MQTT
 broker placed on localhost. Basically it's creating a dual-way pipe between the
 services.
 
