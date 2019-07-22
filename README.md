@@ -37,39 +37,48 @@ services.
 
 --------------------------------------------------------------------------------
 
-### Scripts
+### Hardware
 
-The build/dependency/run scripts are built for Apline Linux but can be easily
-adapted for Debian or something else.
+Make sure you have HDMI CEC capable hardware
 
---------------------------------------------------------------------------------
-
-### Install build dependencies
-
-Installs git, go & musl-dev
-
-```bash
-ash install-build-dependencies.sh
-```
+ - Raspberry PIs have this by default
+ - Intel NUCs usually require an (additional hardware module)[https://www.pulse-eight.com/p/154/intel-nuc-hdmi-cec-adapter] to be installed
+ - Other devices can use (this)[https://www.pulse-eight.com/p/104/usb-hdmi-cec-adapter] generic adapter
 
 --------------------------------------------------------------------------------
 
 ### Build
 
-Builds the `cec-client-mqtt-bridge` binary
+The build/dependency/run scripts are built for Apline Linux but can be easily
+adapted for Debian or something else.
 
 ```bash
+# Install git, go & musl-dev
+ash install-build-dependencies.sh
+
+# Build binary
 ash build.sh
+
+# Remove git, go & musl-dev
+ash remove-build-dependencies.sh
 ```
 
 --------------------------------------------------------------------------------
 
-### Remove build dependencies
+### Runtime dependencies
 
-Removes git, go & musl-dev
+For this to work you need the `cec-client` binary.
+
+To install it in Alpine Linux just run:
 
 ```bash
-ash remove-build-dependencies.sh
+apk add libcec
+```
+
+For Debian based systems this should do the trick:
+
+```bash
+apt install cec-utils
 ```
 
 --------------------------------------------------------------------------------
