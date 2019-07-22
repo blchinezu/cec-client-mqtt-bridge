@@ -5,7 +5,7 @@ HDMI CEC-MQTT Bridge using the **cec-client** binary
 
 ### Description
 
-This lets you send commands and receive answers to/from the `cec-client` binary
+This lets you send commands and receive answers from the `cec-client` binary
 through MQTT.
 
  - To send commands you publish into `cec/client/tx`
@@ -16,9 +16,9 @@ through MQTT.
 ### Why this exists
 
 All the existing implementations try to connect directly to CEC and interpret
-the messages although this is already done in cec-client and it's the most
+the messages although this is already done in `cec-client` and it's the most
 reliable implementation. Everyone checks the CEC functionality and/or their
-implementation with cec-client anyway.
+implementation with `cec-client` anyway.
 
 So this project is creating a bridge between the cec-client binary and an MQTT
 broker placed on localhost. Basically it's creating a dual-way pipe between the
