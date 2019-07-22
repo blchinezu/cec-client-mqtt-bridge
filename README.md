@@ -5,17 +5,24 @@ HDMI CEC-MQTT Bridge using the **cec-client** binary
 
 ### Description
 
-All the existing implementations try to connect directly to CEC and interpret the messages although this is already done in cec-client and it's the most reliable implementation. Everyone checks the CEC functionality with cec-client anyway.
+All the existing implementations try to connect directly to CEC and interpret
+the messages although this is already done in cec-client and it's the most
+reliable implementation. Everyone checks the CEC functionality with cec-client
+anyway.
 
-So this project is creating a bridge between the cec-client binary and an MQTT broker placed on localhost. Basically it's creating a dual-way pipe between the services.
+So this project is creating a bridge between the cec-client binary and an MQTT
+broker placed on localhost. Basically it's creating a dual-way pipe between the
+services.
 
-The output of MQTT's topic **cec/client/tx** is going into cec-client and the output of cec-client is going into **cec/client/rx/TRAFFIC**
+The output of MQTT's topic **cec/client/tx** is going into cec-client and the
+output of cec-client is going into **cec/client/rx/TRAFFIC**
 
 --------------------------------------------------------------------------------
 
 ### Scripts
 
-The build/dependency/run scripts are built for Apline Linux. But can be easily adapted for other systems.
+The build/dependency/run scripts are built for Apline Linux. But can be easily
+adapted for other systems.
 
 --------------------------------------------------------------------------------
 
@@ -46,7 +53,8 @@ ash remove-build-dependencies.sh
 bash run.sh
 ```
 
-This creates two pipes in `/tmp/fifo/` which will facilitate the communication between processes. It's then launching the processes.
+This creates two pipes in `/tmp/fifo/` which will facilitate the communication
+between processes. It's then launching the processes.
 
 Here's how the `run.sh` script looks like:
 
