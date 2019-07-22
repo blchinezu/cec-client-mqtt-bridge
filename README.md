@@ -43,7 +43,7 @@ Make sure you have HDMI CEC capable hardware
 
  - Raspberry PIs have this by default
  - Intel NUCs usually require an [additional hardware module](https://www.pulse-eight.com/p/154/intel-nuc-hdmi-cec-adapter) to be installed
- - Other devices can use [this](https://www.pulse-eight.com/p/104/usb-hdmi-cec-adapter) generic adapter
+ - Other devices can use [this generic adapter](https://www.pulse-eight.com/p/104/usb-hdmi-cec-adapter)
 
 --------------------------------------------------------------------------------
 
