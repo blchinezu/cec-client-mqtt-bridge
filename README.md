@@ -8,8 +8,8 @@ HDMI CEC-MQTT Bridge using the **cec-client** binary
 This lets you send commands and receive answers from the `cec-client` binary
 through MQTT.
 
- - To send commands you publish into `cec/client/tx`
- - To read answers you subscribe to `cec/client/rx/TRAFFIC`
+ - To send commands to `cec-client` you publish into `cec/client/tx`
+ - To listen for `cec-client` output you subscribe to `cec/client/rx/TRAFFIC`
 
 --------------------------------------------------------------------------------
 
