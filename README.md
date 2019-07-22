@@ -5,28 +5,48 @@ HDMI CEC-MQTT Bridge using the **cec-client** binary
 
 ### Description
 
+This lets you send commands and receive answers to/from the `cec-client` binary
+through MQTT.
+
+ - To send commands you publish into `cec/client/tx`
+ - To read answers you subscribe to `cec/client/rx/TRAFFIC`
+
+--------------------------------------------------------------------------------
+
+### Why this exists
+
 All the existing implementations try to connect directly to CEC and interpret
 the messages although this is already done in cec-client and it's the most
-reliable implementation. Everyone checks the CEC functionality with cec-client
-anyway.
+reliable implementation. Everyone checks the CEC functionality and/or their
+implementation with cec-client anyway.
 
 So this project is creating a bridge between the cec-client binary and an MQTT
 broker placed on localhost. Basically it's creating a dual-way pipe between the
 services.
 
-The output of MQTT's topic **cec/client/tx** is going into cec-client and the
-output of cec-client is going into **cec/client/rx/TRAFFIC**
+--------------------------------------------------------------------------------
+
+### How's this working
+
+ - The `cec-client-mqtt-bridge` binary connects to the MQTT broker
+ - It subscribes to `cec/client/tx` on a different thread
+ - It spills the received messages in `stdout` which is piped to `cec-client`
+ - It then listens for `stdin` input which is piped from `cec-client` on the
+   main thread
+ - When receiving something it publishes the message on `cec/client/rx/TRAFFIC`
 
 --------------------------------------------------------------------------------
 
 ### Scripts
 
-The build/dependency/run scripts are built for Apline Linux. But can be easily
-adapted for other systems.
+The build/dependency/run scripts are built for Apline Linux but can be easily
+adapted for Debian or something else.
 
 --------------------------------------------------------------------------------
 
 ### Install build dependencies
+
+Installs git, go & musl-dev
 
 ```bash
 ash install-build-dependencies.sh
@@ -35,12 +55,16 @@ ash install-build-dependencies.sh
 
 ### Build
 
+Builds the `cec-client-mqtt-bridge` binary
+
 ```bash
 ash build.sh
 ```
 --------------------------------------------------------------------------------
 
 ### Remove build dependencies
+
+Removes git, go & musl-dev
 
 ```bash
 ash remove-build-dependencies.sh
@@ -49,14 +73,14 @@ ash remove-build-dependencies.sh
 
 ### Run
 
+Creates two pipes in `/tmp/fifo/` which will facilitate the communication
+between processes and then launches the processes.
+
 ```bash
 bash run.sh
 ```
 
-This creates two pipes in `/tmp/fifo/` which will facilitate the communication
-between processes. It's then launching the processes.
-
-Here's how the `run.sh` script looks like:
+Here's how `run.sh` looks like:
 
 ```bash
 # Create pipes
